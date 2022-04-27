@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf 8">
+        <link rel = "stylesheet" href = "todocss.css">
+
+ </head>
+<body>
+
+
+
+<div class="container">
+<input class="input" type="text">
+<input type="button" class="button" value="записать">
+</div>
+
+<div class="list">
+     
+    <div class="total"></div>
+</div>
+
+
+
+
+
+
+<script>
+    let button = document.querySelector('.button');
+    let list = document.querySelector('.list');
+    let input = document.querySelector('.input');
+    input.focus()
+    let task = document.querySelector('.task');
+    let i = 0
+    let total = document.querySelector('.total')
+
+
+    function write() {
+        if (input.value == '') {} else {
+        list.innerHTML = '<div class = "block"><div class="task">' + input.value + '</div><div class="buttons"><input type="button" class="done" value="done"><input type="button" class="delete" value="delete"></div></div>' + list.innerHTML
+        input.value = ''
+        input.focus()
+        let deletebutton = document.querySelectorAll('.delete');
+        let donebutton = document.querySelectorAll('.done');
+        i++;
+        console.log(i)
+        total.innerHTML = i
+        for (let bee of donebutton) {
+            bee.addEventListener('click', buttondone)
+        }
+        for (let elem of deletebutton) {
+            elem.addEventListener('click', buttondelete)
+        }
+    }}
+
+    function buttondelete() {
+        this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)
+    }
+
+    function buttondone () {
+        this.parentElement.parentElement.firstElementChild.classList.toggle('line')
+    }
+
+
+
+
+
+    button.addEventListener('click', write)
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
